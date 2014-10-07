@@ -104,6 +104,12 @@ class Api():
 		url 	= 'products/' + product_id + '?' + urlencode(data)
 		return apirequest.ApiCall(self.username, self.password).call(method, url)
 
+	def productUpdate(self, product_id, data):
+		data['access_token'] = self.access_token
+		method	= 'PUT'
+		url 	= 'products/' + product_id + '?' + urlencode(data)
+		return apirequest.ApiCall(self.username, self.password).call(method, url, data)
+
 	def productCreate(self, data):
 		data['access_token'] = self.access_token
 		method	= 'POST'
